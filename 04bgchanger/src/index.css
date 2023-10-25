@@ -1,0 +1,13 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.circle{
+    width: 225px;
+  }
+
+p{
+    justify-content: space-evenly;
+}
