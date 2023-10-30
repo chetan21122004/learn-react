@@ -1,36 +1,35 @@
 
-import React,{ useId } from 'react';
+import React from 'react';
 
 
 function InputBox({
     label,
     amount  ,
-    onAmntchange,
+    onAmntChange,
     onCurrchng,
     currOptions = [],
     selectCurren = "usd",
-    amtdis = false,
-    cuurendis= false,
-    className = "",
+    amountDisable = false,
+    currencyDisable = false
+    
 }) {
    
-    const amtInputId = useId();
 
     return (
-        <div className={`bg-white p-3 rounded-lg text-sm flex ${className} `}>
+        <div className={`bg-white p-3 rounded-lg text-sm flex `}>
             <div className="w-1/2">
-                <label htmlFor={amtInputId}  className="text-black/40 mb-2 inline-block">
+                <label htmlFor="eror"  className="text-black/40 mb-2 inline-block">
                     {label}
                 </label>
                 <input
                     
                     className="outline-none w-full bg-transparent py-1.5"
-                    id={amtInputId}
+                    id="eror"
                     type="number"
                     placeholder="Amount"
-                    disabled= {amtdis}
                     value={amount}
-                    onChange={(e)=>onAmntchange && onAmntchange(Number(e.target.value))}
+                    disabled = {amountDisable}
+                    onChange={(e)=>onAmntChange && onAmntChange(Number(e.target.value))}
                 />
             </div>
             <div className="w-1/2 flex flex-wrap justify-end text-right">
@@ -38,12 +37,12 @@ function InputBox({
                 <select
                     className="rounded-lg px-1 py-1 bg-gray-100 cursor-pointer outline-none"
                     value={selectCurren}
+                    disabled = {currencyDisable}
                     onChange={(e)=>onCurrchng && onCurrchng(e.target.value) }
-                    disabled = {cuurendis}
                 >
                     
                       {currOptions.map((cur)=>(
-
+                                                            
                         <option key={cur} value={cur}>{cur}</option>
                       ))}
                 
